@@ -1,0 +1,1 @@
+export default function Terms(){return <section className="card narrow"><h1>Conditions d’utilisation</h1><p>Version de préparation. Il faudra finaliser les règles relatives aux défis dangereux, contenus interdits, modération, suppression de compte et responsabilité avant l’ouverture publique.</p></section>}

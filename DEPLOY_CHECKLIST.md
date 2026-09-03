@@ -1,0 +1,22 @@
+# Checklist lancement
+
+- [ ] Exécuter migration 05
+- [ ] Exécuter migration 06
+- [ ] Exécuter migration 07
+- [ ] `npm install`
+- [ ] `npm run dev`
+- [ ] Créer un compte test + confirmer l'email
+- [ ] Tester création événement
+- [ ] Tester pré-départ
+- [ ] Tester upload photo/vidéo
+- [ ] Tester vote avec 2 comptes
+- [ ] Tester profil/avatar/password
+- [ ] Créer repository GitHub
+- [ ] Déployer l'app
+- [ ] Ajouter les variables d'environnement chez l'hébergeur
+- [ ] Ajouter URL publique dans Supabase Auth Redirect URLs
+- [ ] Définir ton compte en `platform_admin`
+- [ ] Acheter domaine plus tard
+- [ ] Brancher SMTP Resend
+- [ ] Finaliser CGU/Privacy
+- [ ] AdSense + consentement seulement après
