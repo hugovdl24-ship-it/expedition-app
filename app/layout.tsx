@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
+import './mobile.css'
 import { Header } from '@/components/Header'
 import { AdSlot } from '@/components/AdSlot'
 
