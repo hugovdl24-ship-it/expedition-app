@@ -14,7 +14,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Rec
         <div className="eyebrow">LE JEU DE DÉFIS QUI DURE VRAIMENT</div>
         <h1>Faites des trucs dont vous parlerez encore dans 10 ans.</h1>
         <p>Créez une expédition, préparez une liste de défis absurdes, publiez les preuves, laissez le groupe voter et découvrez qui ira le plus loin.</p>
-        <div className="actions"><Link className="button" href="/register">Créer mon compte</Link><a className="button ghost" href="#comment-ca-marche">Comment ça marche</a></div>
+        <div className="actions"><Link className="button" href="/register">Créer mon compte</Link><Link className="button ghost" href="/explore">Explorer les expéditions</Link><a className="button ghost" href="#comment-ca-marche">Comment ça marche</a></div>
       </div>
       <div className="landing-side"><img className="landing-logo" src="/logo.png" alt="Logo Expédition" /></div>
     </section>

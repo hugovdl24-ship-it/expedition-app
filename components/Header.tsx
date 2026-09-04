@@ -26,6 +26,8 @@ export async function Header() {
         {profile?.role === 'platform_admin' && <Link href="/admin">Admin</Link>}
         <form action={logoutAction}><button className="linkbtn" type="submit">Déconnexion</button></form>
       </> : <>
+        <Link href="/explore">Explorer</Link>
+        <Link href="/support">Soutenir</Link>
         <Link href="/login">Connexion</Link>
         <Link className="button small" href="/register">Créer un compte</Link>
       </>}
@@ -52,6 +54,8 @@ export async function Header() {
             <button className="mobile-menu-item mobile-menu-logout" type="submit"><span className="mobile-menu-icon">↪</span><span>Se déconnecter</span></button>
           </form>
         </> : <>
+          <Link className="mobile-menu-item" href="/explore"><span className="mobile-menu-icon">⌕</span><span>Explorer</span></Link>
+          <Link className="mobile-menu-item" href="/support"><span className="mobile-menu-icon">♡</span><span>Soutenir</span></Link>
           <Link className="mobile-menu-item" href="/login"><span className="mobile-menu-icon">→</span><span>Connexion</span></Link>
           <Link className="mobile-menu-item mobile-menu-primary" href="/register"><span className="mobile-menu-icon">＋</span><span>Créer un compte</span></Link>
         </>}
