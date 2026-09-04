@@ -1,6 +1,7 @@
 'use server'
 
 import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 import { headers } from 'next/headers'
 import { createClient } from '@/lib/supabase/server'
 
@@ -31,13 +32,16 @@ export async function loginAction(formData: FormData) {
   const password = String(formData.get('password') || '')
   const { error } = await supabase.auth.signInWithPassword({ email, password })
   if (error) redirect(target('/login','e','Email ou mot de passe incorrect, ou email non confirmé.'))
+  revalidatePath('/', 'layout')
   redirect('/')
 }
 
 export async function logoutAction() {
   const supabase = await createClient()
-  await supabase.auth.signOut()
-  redirect('/')
+  const { error } = await supabase.auth.signOut()
+  revalidatePath('/', 'layout')
+  if (error) redirect(target('/','e','La déconnexion a échoué. Réessaie dans un instant.'))
+  redirect(target('/login','m','Tu es bien déconnecté.'))
 }
 
 export async function forgotPasswordAction(formData: FormData) {
