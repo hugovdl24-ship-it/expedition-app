@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 import { headers } from 'next/headers'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 function target(path:string, type:'m'|'e', message:string) {
   return `${path}?${type}=${encodeURIComponent(message)}`
@@ -28,10 +29,43 @@ export async function registerAction(formData: FormData) {
 
 export async function loginAction(formData: FormData) {
   const supabase = await createClient()
-  const email = String(formData.get('email') || '').trim().toLowerCase()
+  const identifier = String(formData.get('identifier') || '').trim().toLowerCase()
   const password = String(formData.get('password') || '')
+
+  let email = identifier
+
+  if (!identifier.includes('@')) {
+    if (identifier.length < 3 || !/^[a-z0-9._-]+$/.test(identifier)) {
+      redirect(target('/login','e','Identifiant ou mot de passe incorrect, ou email non confirmé.'))
+    }
+
+    let admin
+    try {
+      admin = createAdminClient()
+    } catch {
+      redirect(target('/login','e','Connexion par pseudo temporairement indisponible. Utilise ton adresse email.'))
+    }
+
+    const { data: profile, error: profileError } = await admin
+      .from('profiles')
+      .select('id')
+      .eq('username', identifier)
+      .maybeSingle()
+
+    if (profileError || !profile) {
+      redirect(target('/login','e','Identifiant ou mot de passe incorrect, ou email non confirmé.'))
+    }
+
+    const { data: userData, error: userError } = await admin.auth.admin.getUserById(profile.id)
+    email = userData.user?.email || ''
+
+    if (userError || !email) {
+      redirect(target('/login','e','Identifiant ou mot de passe incorrect, ou email non confirmé.'))
+    }
+  }
+
   const { error } = await supabase.auth.signInWithPassword({ email, password })
-  if (error) redirect(target('/login','e','Email ou mot de passe incorrect, ou email non confirmé.'))
+  if (error) redirect(target('/login','e','Identifiant ou mot de passe incorrect, ou email non confirmé.'))
   revalidatePath('/', 'layout')
   redirect('/')
 }
