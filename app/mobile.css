@@ -105,10 +105,10 @@
   .ad-slot .ad-label { font-size: 9px; }
   .ad-slot strong { font-size: 13px; }
   .ad-slot small { font-size: 10px; line-height: 1.35; }
-  .ad-slot.rectangle,
-  .twocol aside .ad-slot { min-height: 180px !important; }
+  .ad-slot.rectangle { min-height: 180px !important; }
   ins.adsbygoogle { width: 100% !important; max-width: 100% !important; }
   .mobile-feed-ad { display: block !important; }
+  .twocol aside > .ad-slot { display: none !important; }
 
   /* Feed, media and forms */
   .twocol { grid-template-columns: 1fr; }
@@ -162,8 +162,7 @@
   .event-stat { width: 100%; }
 
   .ad-slot { min-height: 86px !important; border-radius: 14px; }
-  .ad-slot.rectangle,
-  .twocol aside .ad-slot { min-height: 160px !important; }
+  .ad-slot.rectangle { min-height: 160px !important; }
 
   .event-card-actions,
   .challenge-card .challenge-actions { align-items: stretch; flex-direction: column; }
