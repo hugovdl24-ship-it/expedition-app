@@ -1,0 +1,179 @@
+/* Mobile-first polish for Expédition */
+@media (max-width: 820px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+
+  /* Main navigation: keep every action accessible on phones */
+  .topbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 9px;
+    padding: 10px 12px 8px;
+  }
+  .topbar .brand {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .topbar nav {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 0 7px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
+  }
+  .topbar nav a:not(.button) { display: inline-flex !important; }
+  .topbar nav a,
+  .topbar nav form,
+  .topbar nav button {
+    flex: 0 0 auto;
+  }
+  .topbar nav a,
+  .topbar .linkbtn {
+    min-height: 38px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.08);
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .topbar nav .button.small {
+    min-height: 38px;
+    padding: 8px 11px;
+  }
+  .topbar nav form { margin: 0; }
+  .topbar .linkbtn { color: white; }
+
+  /* Page shell and cards */
+  .shell {
+    width: calc(100% - 20px);
+    margin: 14px auto 56px;
+  }
+  .shell::before { display: none; }
+  .card { padding: 17px; border-radius: 18px; }
+  .pagehead { margin: 20px 0 16px; gap: 14px; }
+  .pagehead h1 { font-size: clamp(36px, 10vw, 54px); }
+  .pagehead p, .landing p, .eventhero p { font-size: 16px; line-height: 1.55; }
+  .row { flex-wrap: wrap; align-items: flex-start; }
+
+  /* Event header + tabs: show ALL tabs at once instead of hiding/scrolling them away */
+  .eventhero { padding: 22px 17px; }
+  .eventhero h1 { font-size: clamp(36px, 11vw, 54px); }
+  .eventnav {
+    position: static !important;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+    padding: 8px;
+    margin-bottom: 18px;
+  }
+  .eventnav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 6px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.15;
+    font-size: 12px;
+  }
+  .event-stats { gap: 8px; }
+  .event-stat { padding: 10px 11px; font-size: 12px; }
+
+  /* Ads: always visible and sized for the viewport */
+  .ad-slot {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 92px !important;
+    margin: 12px 0 18px !important;
+    padding: 8px;
+  }
+  .ad-slot > div { width: 100%; padding: 10px !important; }
+  .ad-slot .ad-label { font-size: 9px; }
+  .ad-slot strong { font-size: 13px; }
+  .ad-slot small { font-size: 10px; line-height: 1.35; }
+  .ad-slot.rectangle,
+  .twocol aside .ad-slot { min-height: 180px !important; }
+  ins.adsbygoogle { width: 100% !important; max-width: 100% !important; }
+  .mobile-feed-ad { display: block !important; }
+
+  /* Feed, media and forms */
+  .twocol { grid-template-columns: 1fr; }
+  .media-grid, .media-preview { grid-template-columns: 1fr; }
+  .media-shell { min-height: 0; }
+  .media-shell img, .media-shell video { max-height: 70vh; }
+  .attempt-head { align-items: flex-start; }
+  .attempt-title { font-size: clamp(28px, 9vw, 42px); }
+  .statbar { gap: 8px; }
+  .statbar span { flex: 1 1 130px; }
+  .formgrid { grid-template-columns: 1fr; }
+  .span2 { grid-column: auto; }
+  input, textarea, select { font-size: 16px; }
+  .comment-form, .attempt-actions, .profile-actions { flex-wrap: wrap; }
+
+  /* Lists / rankings */
+  .rank {
+    grid-template-columns: 36px 34px minmax(0, 1fr) auto;
+    gap: 7px;
+    padding: 10px 7px;
+  }
+  .rank .place { font-size: 18px; }
+  .memberrow { align-items: flex-start; flex-wrap: wrap; }
+  .invitecode { font-size: 22px; overflow-wrap: anywhere; }
+  dl { grid-template-columns: 1fr; }
+  table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Landing / support */
+  .landing-v3 { gap: 24px; padding-top: 30px; }
+  .landing-v3 h1 { font-size: clamp(46px, 13vw, 66px); }
+  .support-home { padding: 20px 16px; }
+  .support-hero { padding: 22px 17px; }
+  footer { padding: 26px 14px 34px; }
+}
+
+@media (max-width: 520px) {
+  .topbar { padding-left: 10px; padding-right: 10px; }
+  .logo-img { width: 32px; height: 32px; }
+  .brand span { font-size: 13px; letter-spacing: .09em; }
+  .topbar nav a[href="/support"] { display: inline-flex !important; }
+  .topbar nav a,
+  .topbar .linkbtn,
+  .topbar nav .button.small { font-size: 11px; padding: 7px 9px; }
+
+  .shell { width: calc(100% - 16px); margin-top: 10px; }
+  .card { padding: 15px; }
+  .eventnav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .eventnav a { min-height: 42px; font-size: 12px; }
+  .event-stats { grid-template-columns: 1fr !important; }
+  .event-stat.gold { grid-column: auto !important; }
+  .event-stat { width: 100%; }
+
+  .ad-slot { min-height: 86px !important; border-radius: 14px; }
+  .ad-slot.rectangle,
+  .twocol aside .ad-slot { min-height: 160px !important; }
+
+  .event-card-actions,
+  .challenge-card .challenge-actions { align-items: stretch; flex-direction: column; }
+  .event-card-actions .button,
+  .challenge-card .challenge-actions .button { width: 100%; }
+  .actions .button { width: 100%; }
+  .profile .actions .button { width: 100%; }
+
+  .rank { grid-template-columns: 30px 32px minmax(0, 1fr); }
+  .rank > :last-child { grid-column: 3; justify-self: start; }
+  .media-preview-item { height: 210px; }
+  .prelaunch { padding: 20px 16px; }
+}
